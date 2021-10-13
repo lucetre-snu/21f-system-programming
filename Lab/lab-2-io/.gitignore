@@ -1,0 +1,7 @@
+dirtree
+*.o
+*.d
+test?/*
+demo/*
+.ipynb_checkpoints/*
+*.c.swp
