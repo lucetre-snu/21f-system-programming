@@ -36,12 +36,7 @@ void hdl_sigusr2() {
 void child() {
   printf("[%d] Hello from child.\n", getpid());
   
-  struct sigaction action;
-  action.sa_handler = hdl_sigusr1;
-  sigemptyset(&action.sa_mask);
-  action.sa_flags = 0;
-
-  if (sigaction(SIGUSR1, &action, NULL) < 0)
+  if (signal(SIGUSR1, hdl_sigusr1) == SIG_ERR)
     perror("Cannot install SIGUSR1 handler.");
   printf("[%d]   SIGUSR1 handler installed.\n", getpid());
 
